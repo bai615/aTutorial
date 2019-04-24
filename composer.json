@@ -1,0 +1,15 @@
+{
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^7.0.8",
+        "monolog/monolog": "^1.24",
+        "ruflin/elastica": "^6.1",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        }
+    }
+}
