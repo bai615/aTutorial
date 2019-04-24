@@ -6,7 +6,8 @@
         "monolog/monolog": "^1.24",
         "ruflin/elastica": "^6.1",
         "guzzlehttp/guzzle": "^6.3",
-        "symfony/cache": "^4.2"
+        "symfony/cache": "^4.2",
+        "illuminate/database": "^5.8"
     },
     "config": {
         "preferred-install": {
