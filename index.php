@@ -9,7 +9,10 @@
 require './vendor/autoload.php';
 
 
-require_once './stream.php';
+//require_once './stream.php';
 
 
 //require_once './stream_format.php';
+
+
+require_once './logstash_format.php';
