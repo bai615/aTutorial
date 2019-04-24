@@ -15,4 +15,7 @@ require './vendor/autoload.php';
 //require_once './monolog/stream_format.php';
 
 
-require_once './monolog/logstash_format.php';
+//require_once './monolog/logstash_format.php';
+
+
+require_once './cache.php';
