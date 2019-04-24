@@ -3,16 +3,16 @@
  * Created by PhpStorm.
  * User: baihua
  * Date: 2019/4/24
- * Time: 下午7:51
+ * Time: 下午5:06
  */
 
-use Monolog\Formatter\LogstashFormatter;
+use Monolog\Formatter\JsonFormatter;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
-$formatter = new LogstashFormatter('type_name');
+$formatter = new JsonFormatter();
 
-$stream = new StreamHandler(__DIR__.'/logstash.log', Logger::INFO);
+$stream = new StreamHandler(__DIR__ . '/json.log', Logger::INFO);
 $stream->setFormatter($formatter);
 
 $securityLogger = new Logger('security');

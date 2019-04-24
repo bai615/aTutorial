@@ -8,3 +8,6 @@
 /your.log
 /json.log
 /logstash.log
+/monolog/your.log
+/monolog/json.log
+/monolog/logstash.log
