@@ -54,16 +54,44 @@ class AES
         $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
         
         if (mcrypt_generic_init($cipher, $key128, $iv) != -1) {
-            
+
             if (is_array($unencrypted)) {
                 $str_padded = json_encode($unencrypted);
             } else {
                 $str_padded = $unencrypted;
             }
             $cipherText = mcrypt_generic($cipher, $str_padded);
+            
             mcrypt_generic_deinit($cipher);
+            mcrypt_module_close($cipher);
 
             return base64_encode($cipherText);
+        }
+
+        return '';
+    }
+
+    /**
+     * 解密 (适用 PHP 5)
+     * @param $encrypted
+     * @param $key
+     * @param $iv
+     * @return string
+     */
+    function decrypt5($encrypted, $key128, $iv)
+    {
+        $str_padded = base64_decode($encrypted);
+
+        $cipher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
+        
+        if (mcrypt_generic_init($cipher, $key128, $iv) != -1) {
+            
+            $cipherText = mdecrypt_generic($cipher, $str_padded);
+
+            mcrypt_generic_deinit($cipher);
+            mcrypt_module_close($cipher);
+
+            return (rtrim(rtrim($cipherText, chr(0)), chr(7)));
         }
 
         return '';
