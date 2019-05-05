@@ -24,3 +24,17 @@ function toUnderScore($str)
     }, $str);
     return trim(preg_replace('/_{2,}/', '_', $dstr), '_');
 }
+
+//下划线命名到驼峰命名
+function toCamelCase($str)
+{
+    $array  = explode('_', $str);
+    $result = $array[0];
+    $len    = count($array);
+    if ($len > 1) {
+        for ($i = 1; $i < $len; $i++) {
+            $result .= ucfirst($array[$i]);
+        }
+    }
+    return $result;
+}
