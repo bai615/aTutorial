@@ -38,3 +38,31 @@ function toCamelCase($str)
     }
     return $result;
 }
+
+/**
+ * 获取配置参数 为空则获取所有配置。
+ * 多维配置获取时，以 . 分割，例如：parent.child
+ * @param string $name
+ * @return mixed|null
+ */
+function config($name = '')
+{
+    global $config_data;
+    if (empty($name)) {
+        return $config_data;
+    } else {
+        $name   = explode('.', $name);
+        $config = $config_data;
+        // 按.拆分成多维数组进行判断
+        foreach ($name as $val) {
+            if (empty($val)) {
+                continue;
+            } elseif (isset($config[$val])) {
+                $config = $config[$val];
+            } else {
+                return null;
+            }
+        }
+        return $config;
+    }
+}

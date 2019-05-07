@@ -11,3 +11,5 @@
 /monolog/your.log
 /monolog/json.log
 /monolog/logstash.log
+
+/test
