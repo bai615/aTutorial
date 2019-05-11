@@ -66,3 +66,21 @@ function config($name = '')
         return $config;
     }
 }
+
+/**
+ * 将时间戳字符串转为日期时间格式
+ * @param $time_str
+ * @param $format
+ * @return string
+ */
+function strtotime($time_str, $format = 'YmdHis')
+{
+    // 除去微秒部分
+    $time_str = substr($time_str, 0, 10);
+    $strlen = strlen($time_str);
+    $time = 0;
+    for ($i = 0; $i < $strlen; $i++) {
+        $time = $time * 10 + ((int) substr($time_str, $i, 1));
+    }
+    return date($format, $time);
+}
