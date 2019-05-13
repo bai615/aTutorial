@@ -14,6 +14,12 @@ class DataMap
     private static $datetime_maps = [
     ];
 
+    /**
+     * 过滤数组的key，进行变量类型强制转换
+     * @param $data
+     *
+     * @return mixed
+     */
     public static function filter(&$data)
     {
         foreach ($data as $key => $value) {
@@ -29,5 +35,20 @@ class DataMap
             }
         }
         return $data;
+    }
+
+    /**
+     * 将 json 字符串中 int 类型数字转为 float 类型数字
+     * 例如：将{"price":27}转为{"price":27.00}
+     * @param $context
+     */
+    public static function formatter(&$context)
+    {
+        foreach (self::$float_maps as $data_key){
+            $pattern = '/("'.$data_key.'":[0-9]+),/';
+            $context = preg_replace($pattern, '${1}.00,', $context);
+            $pattern = '/("'.$data_key.'":[0-9]+)}/';
+            $context = preg_replace($pattern, '${1}.00}', $context);
+        }
     }
 }
