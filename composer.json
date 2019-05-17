@@ -8,7 +8,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "symfony/cache": "^4.2",
         "illuminate/database": "^5.8",
-        "illuminate/cache": "^5.8"
+        "illuminate/cache": "^5.8",
+        "predis/predis": "^1.1"
     },
     "config": {
         "preferred-install": {
