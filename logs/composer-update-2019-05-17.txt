@@ -1,0 +1,13 @@
+composer update
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 4 installs, 1 update, 0 removals
+  - Updating elasticsearch/elasticsearch (v6.5.0 => v6.7.0): Downloading (100%)
+  - Installing symfony/var-exporter (v4.2.8): Downloading (100%)
+  - Installing psr/cache (1.0.1): Loading from cache
+  - Installing symfony/cache (v4.2.8): Downloading (100%)
+  - Installing illuminate/cache (v5.8.17): Downloading (100%)
+illuminate/cache suggests installing illuminate/filesystem (Required to use the file cache driver (5.8.*).)
+illuminate/cache suggests installing illuminate/redis (Required to use the redis cache driver (5.8.*).)
+Writing lock file
+Generating autoload files
