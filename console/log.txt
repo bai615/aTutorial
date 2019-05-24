@@ -1,0 +1,21 @@
+composer require symfony/console @stable
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 3 installs, 0 updates, 0 removals
+  - Installing symfony/polyfill-mbstring (v1.11.0): Loading from cache
+  - Installing symfony/contracts (v1.1.0): Loading from cache
+  - Installing symfony/console (v4.2.8): Loading from cache
+symfony/contracts suggests installing psr/cache (When using the Cache contracts)
+symfony/contracts suggests installing psr/container (When using the Service contracts)
+symfony/contracts suggests installing symfony/cache-contracts-implementation ()
+symfony/contracts suggests installing symfony/event-dispatcher-implementation ()
+symfony/contracts suggests installing symfony/http-client-contracts-implementation ()
+symfony/contracts suggests installing symfony/service-contracts-implementation ()
+symfony/contracts suggests installing symfony/translation-contracts-implementation ()
+symfony/console suggests installing symfony/event-dispatcher ()
+symfony/console suggests installing symfony/lock ()
+symfony/console suggests installing symfony/process ()
+symfony/console suggests installing psr/log (For using the console logger)
+Writing lock file
+Generating autoload files
