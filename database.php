@@ -59,3 +59,9 @@ Capsule::schema()->create('users', function ($table) {
     $table->string('email')->unique();
     $table->timestamps();
 });
+
+// 获取数据表字段名称
+$columns = Capsule::schema()->getColumnListing('order_infos');
+foreach($columns as $column) {
+    echo '$model->'.$column." = \$data['".$column."'];</br>";
+}
