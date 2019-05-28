@@ -65,3 +65,7 @@ $columns = Capsule::schema()->getColumnListing('order_infos');
 foreach($columns as $column) {
     echo '$model->'.$column." = \$data['".$column."'];</br>";
 }
+
+// 可以在模型查询操作中对查询结果进行排序和分页：
+//
+//$posts = Post::where('views', '>', 0)->orderBy('id', 'desc')->offset(10)->limit(5)->get();
