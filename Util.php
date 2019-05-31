@@ -73,7 +73,7 @@ function config($name = '')
  * @param $format
  * @return string
  */
-function strtotime($time_str, $format = 'YmdHis')
+function strtotimeformat($time_str, $format = 'YmdHis')
 {
     // 除去微秒部分
     $time_str = substr($time_str, 0, 10);
@@ -83,4 +83,32 @@ function strtotime($time_str, $format = 'YmdHis')
         $time = $time * 10 + ((int) substr($time_str, $i, 1));
     }
     return date($format, $time);
+}
+
+/**
+ * 获取某年的每周第一天和最后一天
+ *
+ * @param  [int] $year [年份]
+ *
+ * @return mixed [array]       [每周的周一和周日]
+ */
+function getWeek($year) {
+    $year_start = $year . "-01-01";
+    $year_end = $year . "-12-31";
+    $start_day = strtotime('Monday this week', strtotime($year_start));
+    $year_monday = date("Y-m-d", $start_day); //获取年第一周的日期
+
+    for ($i = 1; $i <= 52; $i++) {
+        $j = $i -1;
+        $start_date = date("Y-m-d", strtotime("$year_monday $j week "));
+
+        $end_day = date("Y-m-d", strtotime("$start_date +6 day"));
+
+        $week_array[$i] = array (
+            str_replace("-",
+                ".",
+                $start_date
+            ), str_replace("-", ".", $end_day));
+    }
+    return $week_array;
 }

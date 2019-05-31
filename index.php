@@ -20,6 +20,12 @@ require './vendor/autoload.php';
 
 //require_once './cache.php';
 
+require_once './Util.php';
+
+$result = getWeek(2019);
+var_dump($result);
+exit;
+
 require_once './libs/AES.php';
 
 $str = '{
