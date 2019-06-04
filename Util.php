@@ -42,7 +42,9 @@ function toCamelCase($str)
 /**
  * 获取配置参数 为空则获取所有配置。
  * 多维配置获取时，以 . 分割，例如：parent.child
+ *
  * @param string $name
+ *
  * @return mixed|null
  */
 function config($name = '')
@@ -69,18 +71,20 @@ function config($name = '')
 
 /**
  * 将时间戳字符串转为日期时间格式
+ *
  * @param $time_str
  * @param $format
+ *
  * @return string
  */
 function strtotimeformat($time_str, $format = 'YmdHis')
 {
     // 除去微秒部分
     $time_str = substr($time_str, 0, 10);
-    $strlen = strlen($time_str);
-    $time = 0;
+    $strlen   = strlen($time_str);
+    $time     = 0;
     for ($i = 0; $i < $strlen; $i++) {
-        $time = $time * 10 + ((int) substr($time_str, $i, 1));
+        $time = $time * 10 + ((int)substr($time_str, $i, 1));
     }
     return date($format, $time);
 }
@@ -92,23 +96,37 @@ function strtotimeformat($time_str, $format = 'YmdHis')
  *
  * @return mixed [array]       [每周的周一和周日]
  */
-function getWeek($year) {
-    $year_start = $year . "-01-01";
-    $year_end = $year . "-12-31";
-    $start_day = strtotime('Monday this week', strtotime($year_start));
+function getWeek($year)
+{
+    $year_start  = $year . "-01-01";
+    $year_end    = $year . "-12-31";
+    $start_day   = strtotime('Monday this week', strtotime($year_start));
     $year_monday = date("Y-m-d", $start_day); //获取年第一周的日期
 
     for ($i = 1; $i <= 52; $i++) {
-        $j = $i -1;
+        $j          = $i - 1;
         $start_date = date("Y-m-d", strtotime("$year_monday $j week "));
 
         $end_day = date("Y-m-d", strtotime("$start_date +6 day"));
 
-        $week_array[$i] = array (
+        $week_array[$i] = array(
             str_replace("-",
                 ".",
                 $start_date
             ), str_replace("-", ".", $end_day));
     }
     return $week_array;
+}
+
+/**
+ * 获取指定月的第一天和最后一天
+ * @param $date
+ *
+ * @return array
+ */
+function getFirstAndLastDayOfMonth($date)
+{
+    $first_day = date('Y-m-01', strtotime($date));
+    $last_day  = date('Y-m-d', strtotime("$first_day +1 month -1 day"));
+    return [$first_day, $last_day];
 }
