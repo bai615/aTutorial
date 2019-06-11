@@ -12,7 +12,6 @@ use Elasticsearch\ClientBuilder;
 
 $params = array(
     '127.0.0.1:8301',
-    //'192.168.20.98:9200'
 );
 
 
