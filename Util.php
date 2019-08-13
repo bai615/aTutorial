@@ -172,3 +172,22 @@ function genUUID()
 
     return $uuid;
 }
+
+/**
+ * 对数组变量进行 JSON 编码
+ * PHP5.4才支持JSON_UNESCAPED_UNICODE这个参数，此参数是让中文字符在json_encode的时候不用转义，减少数据传输量。
+ * @param mixed array 待编码的 array (除了resource 类型之外，可以为任何数据类型，该函数只能接受 UTF-8 编码的数据)
+ * @return string (返回 array 值的 JSON 形式)
+ */
+function json_encode($array)
+{
+    if(version_compare(PHP_VERSION,'5.4.0','<')){
+        $str = json_encode($array);
+        $str = preg_replace_callback("#\\\u([0-9a-f]{4})#i",function($matchs){
+            return iconv('UCS-2BE', 'UTF-8', pack('H4', $matchs[1]));
+        },$str);
+        return $str;
+    }else{
+        return json_encode($array, JSON_UNESCAPED_UNICODE);
+    }
+}
